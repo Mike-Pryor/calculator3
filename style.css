@@ -1,0 +1,60 @@
+*, *::before, *::after {   /* this selects the entire application */
+    box-sizing: border-box;  /* makes it easier to size the elements */
+    font-family: Gotham Rounded, sans-serif; /* sans-serif is the default, backup font */
+    font-weight: normal;
+  }
+  
+  body { /* this is the background */
+    padding: 0;
+    margin: 0; /* having 0 padding & margin makes the box fill the entire screen */
+    background: linear-gradient(to right, #00AAFF, #fcc56f);
+  }
+  
+  .calculator-grid { /* this is everything in the grid (buttons) */
+    display: grid;
+    justify-content: center;
+    align-content: center; /* 'content' is needed to align the buttons (vs 'item') */
+    min-height: 100vh; /* makes it always fill all of the screen height */
+
+     /* makes the buttons format look like a calculator */
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* 'auto' lets the output box be as large as needed */
+  }
+  
+  .calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem; /* size of elements in the buttons */
+    border: 1px solid white;
+    outline: none; /* removes the default, browsers generated outline */
+    background-color: rgba(255, 255, 255, .75); /* mostly white background, some opacity */
+  }
+  
+  .calculator-grid > button:hover {  /* when you hover over the buttons */
+    background-color: rgba(255, 255, 255, .9);
+  }
+  
+  .span-two {
+    grid-column: span 2; /* Needed for the larger AC and = buttons */
+  }
+  
+  .output {
+    grid-column: 1 / -1; /* so the input/output stretches all the way across the top*/
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end; /* puts elements on the right side of the container */
+    justify-content: space-around; /* pushes away from the top and bottom of the container */
+    flex-direction: column; /* needed so elements line up vertically */
+    padding: 10px; /* Pushes elements inside away from the edges */
+    word-wrap: break-word; /* allows words to wrap */
+    word-break: break-all;
+  }
+  
+  .output .previous-operand {  /* the number text don't blend with the black background */
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+  }
+  
+  .output .current-operand {  /* the number text don't blend with the black background */
+    color: white;
+    font-size: 2.5rem;  /* makes the number/text slightly larger */
+  }
